@@ -1,4 +1,4 @@
-Django==5.0.6
+Django==5.2.15
 whitenoise
 gunicorn
 psycopg2-binary
