@@ -71,6 +71,9 @@ class TodoViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, "todo/index.html")
         self.assertEqual(len(response.context["tasks"]), 1)
+        task = response.context["tasks"][0]
+        self.assertIsNotNone(task.due_at)
+        self.assertEqual(task.due_at, timezone.make_aware(datetime(2024, 6, 30, 23, 59, 59)))
 
     def test_index_get_order_post(self):
         task1 = Task(title="task1", due_at=timezone.make_aware(datetime(2024, 7, 1)))
@@ -107,6 +110,7 @@ class TodoViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.templates[0].name, "todo/detail.html")
         self.assertEqual(response.context["task"], task)
+        self.assertIn("Due at", response.content.decode())
 
     def test_detail_get_fail(self):
         client = Client()
