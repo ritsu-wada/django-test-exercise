@@ -163,3 +163,31 @@ class TodoViewTestCase(TestCase):
         response = client.get("/1/delete")
 
         self.assertEqual(response.status_code, 404)
+
+    def test_toggle_post_to_completed(self):
+        task = Task(title="task1", completed=False)
+        task.save()
+        client = Client()
+        response = client.post("/{}/toggle/".format(task.pk), {"completed": "on"})
+
+        task = Task.objects.get(pk=task.pk)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, "/")
+        self.assertTrue(task.completed)
+
+    def test_toggle_post_to_not_completed(self):
+        task = Task(title="task1", completed=True)
+        task.save()
+        client = Client()
+        response = client.post("/{}/toggle/".format(task.pk), {})
+
+        task = Task.objects.get(pk=task.pk)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, "/")
+        self.assertFalse(task.completed)
+
+    def test_toggle_post_fail(self):
+        client = Client()
+        response = client.post("/1/toggle/", {"completed": "on"})
+
+        self.assertEqual(response.status_code, 404)
