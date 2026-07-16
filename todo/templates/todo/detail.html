@@ -11,29 +11,15 @@
 
 <body>
   <h1>{{ task.title }}</h1>
-<<<<<<< HEAD
-  <ul>
-    <li>Posted at: {{ task.posted_at }}</li>
-    {% if task.due_at %}
-    <li>Due at: {{ task.due_at }}</li>
-    {% if is_overdue_now %}
-    <li>Status: Overdue</li>
-    {% endif %}
-    {% endif %}
-    {% if task.completed %}
-    <li>Status: Completed</li>
-    {% else %}
-    <li>Status: Not Completed</li>
-    {% endif %}
-  </ul>
-=======
->>>>>>> origin/main
 
   <div class="content">
     <ul>
       <li>Posted at: {{ task.posted_at }}</li>
       {% if task.due_at %}
       <li>Due at: {{ task.due_at }}</li>
+      {% if is_overdue_now %}
+      <li>Status: Overdue</li>
+      {% endif %}
       {% endif %}
       {% if task.completed %}
       <li>Status: Completed</li>
@@ -47,6 +33,7 @@
       <a href="{% url 'edit' task.id %}">Edit</a>
       <a href="{% url 'delete' task.id %}">Delete</a>
     </div>
+  </div>
 </body>
 
 </html>
