@@ -27,9 +27,26 @@ html {
 .content {
   background-color: #ffffff;
   padding: 15px;
-  
+
   border-top: solid 2px #808080;
   border-left: solid 2px #808080;
   border-right: solid 2px #ffffff;
   border-bottom: solid 2px #ffffff;
+}
+
+#overdue-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(200, 0, 0, 0.9);
+  color: #fff;
+  font-weight: bold;
+  font-size: 12vw;
+  text-align: center;
+  z-index: 9999;
 }

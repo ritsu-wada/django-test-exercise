@@ -7,24 +7,6 @@
   <meta charset="UTF-8">
   <meta name="author" content="INIAD">
   <link rel="stylesheet" href="{% static 'style.css' %}">
-  <style>
-    #overdue-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(200, 0, 0, 0.9);
-      color: #fff;
-      font-weight: bold;
-      font-size: 12vw;
-      text-align: center;
-      z-index: 9999;
-    }
-  </style>
 </head>
 
 <body>
@@ -66,37 +48,28 @@
         {% if task.due_at %}
         <li>Due at: {{ task.due_at }}</li>
         {% endif %}
-        {% if task.completed %}
+        {% if task.is_overdue_now %}
+        <li>Status: Overdue</li>
+        {% elif task.completed %}
         <li>Status: Completed</li>
         {% else %}
         <li>Status: Not Completed</li>
         {% endif %}
+        <li>
+          <form action="{% url 'toggle' task.id %}" method="post" style="display:inline">
+            {% csrf_token %}
+            <label>
+              <input type="checkbox" name="completed" onchange="this.form.submit()"
+                {% if task.completed %}checked{% endif %}>
+              Mark as completed
+            </label>
+          </form>
+        </li>
       </ul>
     </div>
     {% endfor %}
 
-  {% for task in tasks %}
-  <div class="text">
-    <h2><a href="{% url 'detail' task.id %}">{{ task.title }}</a></h2>
-    <p><a href="{% url 'edit' task.id %}">Edit</a></p>
-    <ul>
-      <li>Posted at: {{ task.posted_at }}</li>
-      {% if task.due_at %}
-      <li>Due at: {{ task.due_at }}</li>
-      {% endif %}
-      <li>
-        <form action="{% url 'toggle' task.id %}" method="post" style="display:inline">
-          {% csrf_token %}
-          <label>
-            <input type="checkbox" name="completed" onchange="this.form.submit()"
-              {% if task.completed %}checked{% endif %}>
-            {% if task.completed %}Completed{% else %}Not Completed{% endif %}
-          </label>
-        </form>
-      </li>
-    </ul>
   </div>
-  {% endfor %}
 </body>
 
 </html>
