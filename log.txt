@@ -1,0 +1,205 @@
+commit 1008dfdd916b7ac53be43a2bfcd4b39c7f8221f7
+Merge: 5cef523 d00803e
+Author: Ritsu <s1f102503183@iniad.org>
+Date:   Thu Jul 2 12:19:29 2026 +0900
+
+    Merge pull request #7 from ritsu-wada/feat/03-add-edit-todo
+    
+    feat: TODOの編集機能を追加
+
+commit 5cef523d463283db06591bd17dddbb276fccb26a
+Merge: 4ae883f 2d40254
+Author: Ritsu <s1f102503183@iniad.org>
+Date:   Thu Jul 2 12:13:06 2026 +0900
+
+    Merge pull request #5 from ritsu-wada/add-render-config
+    
+    fix shell script
+
+commit 2d40254717d28ea95253a39465f70aecb09e8c9a
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jul 2 12:11:56 2026 +0900
+
+    fix shell script
+
+M	build.sh
+
+commit d00803efd74a8e92f62e0a0c56f184854761657b
+Author: 1F102500405 <s1f102500405@iniad.org>
+Date:   Thu Jul 2 12:11:53 2026 +0900
+
+    feat: TODOの編集機能を追加
+
+M	config/urls.py
+M	todo/templates/todo/detail.html
+A	todo/templates/todo/edit.html
+M	todo/templates/todo/index.html
+M	todo/tests.py
+M	todo/views.py
+
+commit 4ae883fd0ef4fb84e3a333dabc34309b86239f0c
+Merge: 033a5b0 fa83eb8
+Author: Ritsu <s1f102503183@iniad.org>
+Date:   Thu Jul 2 12:07:20 2026 +0900
+
+    Merge pull request #4 from ritsu-wada/add-render-config
+    
+    fix version
+
+commit fa83eb8c596c5df90ed380a2299994ef4976cdcb
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jul 2 12:05:36 2026 +0900
+
+    fix version
+
+M	requirements.txt
+
+commit 033a5b038c64ae65a8969b155b4bf06442b8ab02
+Merge: 36298d3 4c22d89
+Author: R2! <s1f102503183@iniad.org>
+Date:   Thu Jul 2 11:42:10 2026 +0900
+
+    Merge pull request #3 from ritsu-wada/add-render-config
+    
+    add: render's setting file
+
+commit 4c22d89df29380ada3a274f58ad421b3a35e3cea
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jul 2 11:34:07 2026 +0900
+
+    add: render's setting file
+
+A	build.sh
+A	config/production.py
+A	render.yaml
+M	requirements.txt
+
+commit 36298d31bae0ccde213ccfd6a78f07f0da128049
+Merge: e566336 4e8e09f
+Author: R2! <s1f102503183@iniad.org>
+Date:   Fri Jun 26 23:13:26 2026 +0900
+
+    Merge pull request #2 from ritsu-wada/feature/#1-add-detail-page
+    
+    Feature/#1 add detail page
+
+commit 4e8e09f08e9b29316297c55daea271bb641bc87e
+Author: R2 <s1f102503183@iniad.org>
+Date:   Fri Jun 26 23:08:02 2026 +0900
+
+    詳細ページのテストを追加
+
+M	todo/tests.py
+M	todo/views.py
+
+commit c2e59eff1871c29b209699ff0918ecb634dd1d32
+Author: R2 <s1f102503183@iniad.org>
+Date:   Fri Jun 26 23:00:31 2026 +0900
+
+    詳細ページを追加
+
+M	config/urls.py
+A	todo/templates/todo/detail.html
+M	todo/templates/todo/index.html
+M	todo/views.py
+
+commit e5663360ded1cfe6487bc1af2d42fc9412f1db6b
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jun 25 11:54:25 2026 +0900
+
+    add: requirements.txt
+
+A	requirements.txt
+
+commit d9c16276af34bf61447519136d360e075412a4c0
+Author: R2! <s1f102503183@iniad.org>
+Date:   Thu Jun 25 11:52:11 2026 +0900
+
+    Modify Django CI workflow for Python 3.12
+    
+    Updated Python version to 3.12 and added flake8 linting step.
+
+A	.github/workflows/django.yml
+
+commit fc49f3da085dffe15fe78402a744e16f8436c06e
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jun 25 09:34:39 2026 +0900
+
+    ソート機能を追加
+
+M	todo/tests.py
+M	todo/views.py
+
+commit 7adb1c92a1eb274cdf6e62f0bc8adfb706ba9ef2
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jun 25 09:23:43 2026 +0900
+
+    テストを追加
+
+M	todo/tests.py
+
+commit 46a86f725c3ea59ee09b15dc8b571575650e9de5
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jun 18 18:53:44 2026 +0900
+
+    トップページを追加
+
+M	config/urls.py
+A	todo/templates/todo/index.html
+M	todo/views.py
+
+commit 33774c2d6e8f4e83e76c1b4693fc8b30bfbaa499
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jun 18 12:04:29 2026 +0900
+
+    Taskモデルにメソッドを追加
+
+M	todo/models.py
+M	todo/tests.py
+
+commit 5a59e5091dd23bbe0442058f2138bfc643583825
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jun 18 11:49:58 2026 +0900
+
+    Taskモデルを追加
+
+A	todo/migrations/0001_initial.py
+M	todo/models.py
+M	todo/tests.py
+
+commit 859ee05c38973e1136167c86436717cd1f19e6d8
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jun 18 11:24:16 2026 +0900
+
+    テストのサンプルを追加
+
+M	todo/tests.py
+
+commit b599dc453e22874b78e54dce00e3f58ead7a8425
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jun 18 11:22:12 2026 +0900
+
+    todoアプリケーション追加
+
+M	config/settings.py
+A	todo/__init__.py
+A	todo/admin.py
+A	todo/apps.py
+A	todo/migrations/__init__.py
+A	todo/models.py
+A	todo/tests.py
+A	todo/views.py
+
+commit a67980cf175b70d3fc86119e9a7c5d3e981c4267
+Author: R2 <s1f102503183@iniad.org>
+Date:   Thu Jun 18 11:18:50 2026 +0900
+
+    Inital commit
+
+A	.gitignore
+A	config/__init__.py
+A	config/asgi.py
+A	config/settings.py
+A	config/urls.py
+A	config/wsgi.py
+A	manage.py
