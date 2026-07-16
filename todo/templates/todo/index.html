@@ -41,11 +41,16 @@
       {% if task.due_at %}
       <li>Due at: {{ task.due_at }}</li>
       {% endif %}
-      {% if task.completed %}
-      <li>Status: Completed</li>
-      {% else %}
-      <li>Status: Not Completed</li>
-      {% endif %}
+      <li>
+        <form action="{% url 'toggle' task.id %}" method="post" style="display:inline">
+          {% csrf_token %}
+          <label>
+            <input type="checkbox" name="completed" onchange="this.form.submit()"
+              {% if task.completed %}checked{% endif %}>
+            {% if task.completed %}Completed{% else %}Not Completed{% endif %}
+          </label>
+        </form>
+      </li>
     </ul>
   </div>
   {% endfor %}
