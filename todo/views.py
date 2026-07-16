@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.http import Http404
+from django.utils import timezone
 from django.utils.timezone import make_aware
 from django.utils.dateparse import parse_datetime
 from todo.models import Task
@@ -25,7 +26,12 @@ def index(request):
     else:
         tasks = Task.objects.order_by("-posted_at")
 
-    context = {"tasks": tasks}
+    now = timezone.localtime()
+    has_overdue = any(
+        not task.completed and task.is_overdue(now) for task in tasks
+    )
+
+    context = {"tasks": tasks, "now": now, "has_overdue": has_overdue}
     return render(request, "todo/index.html", context)
 
 
