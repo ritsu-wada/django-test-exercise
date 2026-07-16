@@ -1,5 +1,4 @@
-from django.shortcuts import redirect, render
-from django.http import Http404
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils.timezone import make_aware
 from django.utils.dateparse import parse_datetime
@@ -26,20 +25,24 @@ def index(request):
     else:
         tasks = Task.objects.order_by("-posted_at")
 
-    current_time = timezone.now()
+    now = timezone.now()
+    has_overdue = False
     for task in tasks:
         task.is_due = task.due_at is not None
-        task.is_overdue_now = task.is_overdue(current_time)
+        task.is_overdue_now = task.is_overdue(now)
+        if task.is_overdue_now and not task.completed:
+            has_overdue = True
 
-    context = {"tasks": tasks}
+    context = {
+        "tasks": tasks,
+        "now": timezone.localtime(now),
+        "has_overdue": has_overdue,
+    }
     return render(request, "todo/index.html", context)
 
 
 def detail(request, task_id):
-    try:
-        task = Task.objects.get(pk=task_id)
-    except Task.DoesNotExist:
-        raise Http404("Task does not exist")
+    task = get_object_or_404(Task, pk=task_id)
 
     context = {
         "task": task,
@@ -49,10 +52,7 @@ def detail(request, task_id):
 
 
 def edit(request, task_id):
-    try:
-        task = Task.objects.get(pk=task_id)
-    except Task.DoesNotExist:
-        raise Http404("Task does not exist")
+    task = get_object_or_404(Task, pk=task_id)
 
     if request.method == "POST":
         task.title = request.POST["title"]
@@ -68,20 +68,14 @@ def edit(request, task_id):
 
 
 def delete(request, task_id):
-    try:
-        task = Task.objects.get(pk=task_id)
-    except Task.DoesNotExist:
-        raise Http404("Task does not exist")
+    task = get_object_or_404(Task, pk=task_id)
 
     task.delete()
     return redirect("index")
 
 
 def toggle(request, task_id):
-    try:
-        task = Task.objects.get(pk=task_id)
-    except Task.DoesNotExist:
-        raise Http404("Task does not exist")
+    task = get_object_or_404(Task, pk=task_id)
 
     if request.method == "POST":
         task.completed = "completed" in request.POST

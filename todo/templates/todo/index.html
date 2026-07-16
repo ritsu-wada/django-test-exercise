@@ -10,9 +10,13 @@
 </head>
 
 <body>
+  {% if has_overdue %}
+  <div id="overdue-overlay">大学やめろ</div>
+  {% endif %}
   <h1>Sample To Do Application</h1>
   <div class="content">
 
+    <p>Current time: {{ now }}</p>
     <p>You can submit tasks from the following form.</p>
     <form action="{% url 'index' %}" method="post">
       {% csrf_token %}
