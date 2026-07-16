@@ -14,6 +14,9 @@
     <li>Posted at: {{ task.posted_at }}</li>
     {% if task.due_at %}
     <li>Due at: {{ task.due_at }}</li>
+    {% if is_overdue_now %}
+    <li>Status: Overdue</li>
+    {% endif %}
     {% endif %}
     {% if task.completed %}
     <li>Status: Completed</li>
