@@ -6,27 +6,30 @@
   <title>To Do Application</title>
   <meta charset="UTF-8">
   <meta name="author" content="INIAD">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body>
   <h1>{{ task.title }}</h1>
-  <ul>
-    <li>Posted at: {{ task.posted_at }}</li>
-    {% if task.due_at %}
-    <li>Due at: {{ task.due_at }}</li>
-    {% endif %}
-    {% if task.completed %}
-    <li>Status: Completed</li>
-    {% else %}
-    <li>Status: Not Completed</li>
-    {% endif %}
-  </ul>
 
-  <div>
-    <a href="{% url 'index' %}">Top</a>
-    <a href="{% url 'edit' task.id %}">Edit</a>
-    <a href="{% url 'delete' task.id %}">Delete</a>
-  </div>
+  <div class="content">
+    <ul>
+      <li>Posted at: {{ task.posted_at }}</li>
+      {% if task.due_at %}
+      <li>Due at: {{ task.due_at }}</li>
+      {% endif %}
+      {% if task.completed %}
+      <li>Status: Completed</li>
+      {% else %}
+      <li>Status: Not Completed</li>
+      {% endif %}
+    </ul>
+
+    <div>
+      <a href="{% url 'index' %}">Top</a>
+      <a href="{% url 'edit' task.id %}">Edit</a>
+      <a href="{% url 'delete' task.id %}">Delete</a>
+    </div>
 </body>
 
 </html>
